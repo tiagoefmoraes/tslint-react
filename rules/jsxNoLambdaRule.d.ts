@@ -14,24 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import * as Lint from "tslint";
 import * as ts from "typescript";
-
-export class Rule extends Lint.Rules.AbstractRule {
-    public static FAILURE_STRING = "Multiline JS expressions inside JSX are forbidden";
-
-    public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
-        const walker = new JsxNoMultilineJsWalker(sourceFile, this.getOptions());
-        return this.applyWithWalker(walker);
-    }
-}
-
-class JsxNoMultilineJsWalker extends Lint.RuleWalker {
-    protected visitJsxExpression(node: ts.JsxExpression) {
-        if (node.getText().indexOf("\n") > -1) {
-            this.addFailure(this.createFailure(node.getStart(), node.getWidth(), Rule.FAILURE_STRING));
-        }
-        super.visitJsxExpression(node);
-    }
+export declare class Rule extends Lint.Rules.AbstractRule {
+    static FAILURE_STRING: string;
+    apply(sourceFile: ts.SourceFile): Lint.RuleFailure[];
 }

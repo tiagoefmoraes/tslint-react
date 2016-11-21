@@ -14,9 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import * as Lint from "tslint";
 import * as ts from "typescript";
-
-export function nodeIsKind<T extends ts.Node>(node: ts.Node, kind: ts.SyntaxKind): node is T {
-    return node.kind === kind;
+export declare class Rule extends Lint.Rules.AbstractRule {
+    static metadata: Lint.IRuleMetadata;
+    static FAILURE_NO_ENDING_SPACE: (tokenStr: string) => string;
+    static FAILURE_NO_BEGINNING_SPACE: (tokenStr: string) => string;
+    static FAILURE_FORBIDDEN_SPACES_BEGINNING: (tokenStr: string) => string;
+    static FAILURE_FORBIDDEN_SPACES_END: (tokenStr: string) => string;
+    apply(sourceFile: ts.SourceFile): Lint.RuleFailure[];
 }

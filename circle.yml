@@ -1,9 +1,0 @@
-general:
-  branches:
-    ignore:
-      - gh-pages
-deployment:
-  npm:
-    tag: /.*/
-    commands:
-      - ./scripts/npmPublish.sh
